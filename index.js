@@ -23,7 +23,23 @@ const apiProxy = createProxyMiddleware({
 app.use("*", apiProxy);
 
 // Start the server
-var port = normalizePort(process.env.PORT || "8080");
+const port = normalizePort(process.env.PORT || "8080");
 app.listen(port, () => {
   console.log(`Proxy server listening on port ${port}`);
 });
+
+function normalizePort(val) {
+  const port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
