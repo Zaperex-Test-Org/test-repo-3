@@ -23,7 +23,7 @@ const apiProxy = createProxyMiddleware({
 app.use("*", apiProxy);
 
 // Start the server
-const port = 5555; // Choose a port for your proxy server
+var port = normalizePort(process.env.PORT || "8080");
 app.listen(port, () => {
   console.log(`Proxy server listening on port ${port}`);
 });
