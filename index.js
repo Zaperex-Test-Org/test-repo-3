@@ -10,11 +10,11 @@ const apiProxy = createProxyMiddleware({
   target: targetUrl,
   changeOrigin: true, // Necessary for the target API to receive requests from your proxy
   onProxyReq: (proxyReq, req, res) => {
-    // Append additional header to the response
-    proxyReq.headers["ngrok-skip-browser-warning"] = "69420";
+    // Append additional header to the request
+    proxyReq.setHeader("ngrok-skip-browser-warning", "69420");
     // Log the incoming request
     console.log(`Request received: ${JSON.stringify(req.headers)}`);
-    console.log(`New Request: ${JSON.stringify(proxyReq.headers)}`);
+    console.log(`New Request: ${JSON.stringify(proxyReq.getHeaders())}`);
   },
 });
 
