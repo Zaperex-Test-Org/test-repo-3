@@ -1,0 +1,18 @@
+{
+  "apiVersion": "backstage.io/v1alpha1",
+  "kind": "Component",
+  "metadata": {
+    "annotations": {
+      "github.com/project-slug": "Zaperex-Test-Org/test-repo-3",
+      "backstage.io/kubernetes-id": "developer-hub",
+      "janus-idp.io/tekton": "test-repo-3",
+      "quay.io/repository-slug": "rh-ee-frkong/rhpib-testing"
+    },
+    "name": "test-repo-3",
+  },
+  "spec": {
+    "type": "website",
+    "lifecycle": "production",
+    "owner": "user:default/zaperex"
+  }
+}
