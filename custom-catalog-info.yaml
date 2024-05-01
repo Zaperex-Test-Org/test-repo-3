@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: entity-with-different-catalog-info-file-name
+  title: Test
+  description: |
+    This is a test component to test the fetch
+  links:
+    - title: My Github
+      url: https://github.com/Zaperex
+spec:
+  type: library
+  system: janus-idp
+  owner: janus-authors
+  lifecycle: development
