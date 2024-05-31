@@ -1,0 +1,67 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: test-template
+  title: Test Template
+  description: A Test Template for Backstage
+  annotations:
+    backstage.io/createdAt: 5/15/2024, 03:41:11 AM
+  tags:
+    - test
+spec:
+  owner: janus-authors
+  system: janus-idp
+  type: service
+
+  parameters:
+    - title: Provide your Login Credentials
+      required:
+        - username
+        - password
+        - wait_time
+      properties:
+        username:
+          title: Username
+          description: This is just a normal text field
+          type: string
+        password:
+          title: Password
+          type: string
+          description: This should be a masked field since this is sensitive data
+          ui:field: Secret
+        wait_time:
+          title: wait time
+          type: number
+          description: How many seconds do you want to wait?
+          default: 10
+  steps:
+    - id: log-wait-time
+      name: log out the user specified number of seconds to wait
+      action: debug:log
+      input:
+        message: Commence the wait of ${{ parameters.wait_time }} seconds.
+    - id: wait
+      name: wait user specified number of seconds
+      action: debug:wait
+      input:
+        seconds: ${{ parameters.wait_time }}
+    - id: test-step
+      name: test
+      action: debug:log
+      input:
+        message: |
+          Hello ${{ parameters.username }}! Your password is ${{ parameters.password }}, the un-redacted password is ${{ secrets.password }}
+  output:
+    links:
+      - title: Links
+        url: https://example.com
+    text:
+      - title: custom title
+        content: 'This is just some extra text'
+      - title: multiline markdown
+        content: |
+          Bonjour
+          Hello
+          你好
+          おはよう
+          Hola
