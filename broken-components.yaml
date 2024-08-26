@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: broken-components
+  description: A collection of broken components
+spec:
+  targets:
+    - ./components/broken.yaml
